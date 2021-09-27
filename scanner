@@ -1,0 +1,36 @@
+/*
+ * Malcolm Ealy
+ * mxealy0001@student.stcc.edu
+ * 9/27/21
+ * CSC-111
+ * Homework 3
+ * Create programs that inputs 3 sets of 2 calculations. 
+ */
+
+import java.util.Scanner;
+
+
+public class Homework3 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the temperature and dewpoint (in Fahrenheit).");
+		double T1 = input.nextDouble();
+		double Td1 = input.nextDouble();
+		System.out.println("Enter the temperature and relative humidity (in Fahrenheit).");
+		double T2 = input.nextDouble();
+		double RH1 = input.nextDouble();
+		System.out.println("Enter the dewpoint and relative humidity (in Fahrenheit).");
+		double Td2 = input.nextDouble();
+		double RH2 = input.nextDouble(); 
+		
+		double CalcT = (243.04*(((17.625*Td2)/(243.04+Td2))-Math.log(RH2/100.0))/(17.625+Math.log(RH2/100.0)-((17.625*Td2)/(243.04+Td2)))); 
+		double CalcTd = (243.04*(Math.log(RH1/100.0)+((17.625*T2)/(243.04+T2)))/(17.625-Math.log(RH1/100.0)-((17.625*T2)/(243.04+T2))));
+		double CalcRH = (100.0*(Math.exp((17.625*Td1)/(243.04+Td1))/Math.exp((17.625*T1)/(243.04+T1))));
+
+		System.out.println("The calculated temperature is " + CalcT);
+		System.out.println("The calculated dewpoint is " + CalcTd);
+		System.out.println("The calculated relative humidity is " + CalcRH);
+		input.close();
+	}
+}
